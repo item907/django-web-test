@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <!-- Title Tag -->
+    <title>{% block title %}{% endblock %}</title>
+<!--
+
+November Template
+
+http://www.templatemo.com/tm-473-november
+
+-->
+    <!-- <<Mobile Viewport Code>> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            
+    <!-- <<Attched Stylesheets>> -->
+    <link rel="stylesheet" href='{% static "css/theme.css" %}' type="text/css" />
+    <link rel="stylesheet" href='{% static "css/media.css" %}' type="text/css" />
+    <link rel="stylesheet" href='{% static "css/font-awesome.min.css" %}' type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,600italic,400italic,800,700' rel='stylesheet' type='text/css'>    
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+    {% block content %}{% endblock %}
+
+    <!-- <<Attched Javascripts>> -->
+    <script type="text/javascript" src='{% static "js/jquery-1.11.0.min.js" %}'></script>
+    <script type="text/javascript" src='{% static "js/jquery.sudoSlider.min.js" %}'></script>
+    <script type="text/javascript" src='{% static "js/global.js" %}'></script>
+    <script type="text/javascript" src='{% static "js/modernizr.js" %}'></script>
+    
+</body>
+</html>

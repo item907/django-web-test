@@ -1,0 +1,82 @@
+{% load static %}
+<!-- \\ Begin About Section \\ -->
+<div class="About_sec" id="apyt104">
+    <div class="Center">            	
+        <h2>APYT104--TIPTOP請假單查詢</h2><br>           		
+        <h3>TIPTOP&nbsp;--&nbsp;GE-TEST</h3>
+        <h4>
+            <form action = '.' method = 'POST'>
+                {% csrf_token %}
+                資料來源：
+                <select name = 't104_db'>
+                    <option values = '---'>---</option>
+                    <option values = 'GE'>GE</option>
+                    <option values = 'GI'>GI</option>
+                    <option values = 'KS'>KS</option>
+                    <option values = 'GK'>GK</option>
+                    <option values = 'GZ'>GZ</option>
+                </select><br>
+                工號：
+                <input name = 't104_cpf01' type = 'text' id = 't104_cpf01'>&emsp;
+                行序：
+                <input name = 't104_num' type = 'number' id = 't104_num' min = '1'><br>
+                <input type = 'submit' value = '查詢' style = 'width:70px; height:30px;'>
+            </form>
+            查詢條件：{{t104_db}}/{{t104_cpf01}}/{{t104_num}}<br>
+            {% for message in messages %}
+                <div class = 'alert alert-{{message.tags}}'>{{message}}</div>
+            {% endfor %}
+        </h4>
+        <div class="Line"></div>
+        <!-- \\ Begin Tab side \\ -->
+        <div class="Tabside">
+            <h5>apyt104請假單列表<br></h5>
+            <h5 align = 'left'>
+                {% for d in data3 %}
+                    {{s_d1}}<br>
+                    員工代號：{{d.0.0}}&emsp;{{d.0.22}}&emsp;&emsp;&emsp;
+                    行序：{{d.0.2}}<br>
+                    部門：{{d.0.23}}&ensp;{{d.0.25}}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    職務代理：{{d.0.1}}&emsp;{{d.0.26}}<br>
+                    假別：{{d.0.5}}&emsp;{{d.0.27}}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;
+                    請假時數：{{d.0.10}}<br>
+                    請假日期：{{d.0.6}}&nbsp;{{d.0.7}}&emsp;&emsp;
+                    請假天數：{{d.0.12}}<br>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;{{d.0.8}}&nbsp;{{d.0.9}}&emsp;&emsp;
+                    預先借假：{{d.0.11}}<br>
+                    請假原因：{{d.0.13}}<br>
+                    變更紀錄：{{d.0.3}}&nbsp;{{d.0.4}}<br>
+                    簽核否：{{d.0.15}}&emsp;
+                    簽核狀況：{{d.0.16}}&emsp;{{d.0.28}}<br>
+                    {{s_d1}}<br>
+                    &ensp;歸屬日期&emsp;&ensp;
+                    班別&emsp;
+                    開始日期&ensp;
+                    起始時分&ensp;
+                    截止日期&emsp;
+                    截止時分&ensp;
+                    請假時數&emsp;
+                    天數&emsp;&ensp;
+                    借假<br>
+                    {{s_d1}}<br>
+                    {% for d1 in d %}
+                        {% if not forloop.first %}
+                            {{d1.2}}&ensp;
+                            {{d.0.24}}&ensp;
+                            {{d1.3}}&ensp;
+                            {{d1.4}}&emsp;
+                            {{d1.5}}&emsp;
+                            {{d1.6}}&emsp;&ensp;
+                            {{d1.7}}&emsp;&ensp;
+                            {{d1.8}}&emsp;&ensp;
+                            {{d1.9}}<br>
+                        {% endif %}
+                    {% endfor %}
+                    {{s_d1}}<br><br><br>
+                {% endfor %}
+            </h5>
+        </div>               
+        <!-- // End Tab Side // -->
+    </div>
+</div>
+<!-- // End About Section // -->

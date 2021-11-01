@@ -1,0 +1,85 @@
+{% load static %}
+<!-- \\ Begin About Section \\ -->
+<div class="About_sec" id="stock">
+    <div class="Center">            	
+        <h2>TAIWAN STOCK QUERY</h2><br>           		
+        <h3>台灣股市&nbsp;--&nbsp;公司股價查詢</h3><br>
+        <h4>註：頻繁做查詢會造成IP被鎖定一段時間，若需再次查詢請間隔一段時間</h4>
+        <h4>
+            <form action = '.' method = 'POST'>
+                {% csrf_token %}
+                <select name = 'stock_type'>
+                    <option value = 'stock_history'>單月歷史股票資料</option>
+                    <option value = 'stock_realtime'>即時交易資訊</option>
+                    <option value = 'stock_figure'>股價</option>
+                </select><br>
+                <label>代號：</label>
+                <input name = 'stock_code' type = 'text' id = 'stock_code'>&emsp;
+                <label>年度：</label>
+                <select name = 'stock_year'>
+                    {% for y in listy %}
+                        {% if y == s_yy %}
+                            <option value = '{{y}}' selected>{{y}}</option>
+                        {% else %}
+                            <option value = '{{y}}'>{{y}}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>&emsp;
+                <label>月份：</label>
+                <select name = 'stock_month'>
+                    {% for m in listm %}
+                        {% if m == s_mm %}
+                            <option value = '{{m}}' selected>{{m}}</option>
+                        {% else %}
+                            <option value = '{{m}}'>{{m}}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <input type = 'submit' value = '查詢' style = 'width:70px; height:30px;'>
+            </form>
+        </h4>
+        <div class="Line"></div>
+        <!-- \\ Begin Tab side \\ -->
+        <div class="Tabside">
+            <h5>
+                {{st_name}}--
+                {% if stock_type == 'stock_figure' %}
+                    從&nbsp;
+                {% endif %}
+                {% if stock_type != 'stock_realtime' %}
+                    {{st_y}}年{{st_m}}月
+                {% else %}
+                    {{s1_date}}
+                {% endif %}
+                {% if stock_type == 'stock_figure' %}
+                    至今日的&nbsp;
+                {% endif %}
+                {{st_type_name}}
+                <table style = "border-collapse:separate; border-spacing:40px 10px;" border="1">
+                    <tr>
+                        <td>日期</td>
+                        <td>開盤價</td>
+                        <td>最高價</td>
+                        <td>最低價</td>
+                        {% if stock_type != 'stock_realtime' %}
+                            <td>收盤價</td>
+                        {% else %}
+                            <td>目前股價</td>
+                        {% endif %}
+                    </tr>
+                    {% for st in s_list %}
+                        <tr>
+                            <td>{{st.0}}</td>
+                            <td>{{st.1}}</td>
+                            <td>{{st.2}}</td>
+                            <td>{{st.3}}</td>
+                            <td>{{st.4}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </h5>
+        </div>               
+        <!-- // End Tab Side // -->
+    </div>
+</div>
+<!-- // End About Section // -->

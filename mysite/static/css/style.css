@@ -1,0 +1,37 @@
+* {
+    font-family: Sans-serif;
+    border: 1px solid black;
+    margin: 0px;
+	padding: 0px;
+}
+
+.site-title {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: flex;
+	background: rgba(22, 35, 49, 0.767);
+    padding: 10px;
+}
+
+.site-title .no-line {
+    text-decoration:none;
+    color: white;
+    transform: scale(0.9);
+}
+
+.site-title .no-line:hover {
+    transform: scale(1);
+}
+
+ul {
+    display: flex;
+    flex-wrap: flex;
+}
+
+.menu-item {
+    margin: 5px;
+}
+
+.span-color1 {
+    color: orange;
+}

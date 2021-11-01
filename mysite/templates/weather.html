@@ -1,0 +1,61 @@
+{% load static %}
+<!-- \\ Begin About Section \\ -->
+<div class="About_sec" id="weather">
+    <div class="Center">            	
+        <h2>TODAY WEATHER QUERY</h2><br>           		
+        <h3>今日各地天氣查詢</h3><br>
+        <h4>
+            <form action = '.' method = 'POST'>
+                {% csrf_token %}
+                <select name = 'c_name'>
+                    <option value = '臺北市'>臺北市</option>
+                    <option value = '新北市' selected>新北市</option>
+                    <option value = '桃園市'>桃園市</option>
+                    <option value = '臺中市'>臺中市</option>
+                    <option value = '臺南市'>臺南市</option>
+                    <option value = '高雄市'>高雄市</option>
+                    <option value = '基隆市'>基隆市</option>
+                    <option value = '新竹市'>新竹市</option>
+                    <option value = '嘉義市'>嘉義市</option>
+                    <option value = '苗栗縣'>苗栗縣</option>
+                    <option value = '彰化縣'>彰化縣</option>
+                    <option value = '南投縣'>南投縣</option>
+                    <option value = '雲林縣'>雲林縣</option>
+                    <option value = '屏東縣'>屏東縣</option>
+                    <option value = '宜蘭縣'>宜蘭縣</option>
+                    <option value = '花蓮縣'>花蓮縣</option>
+                    <option value = '臺東縣'>臺東縣</option>
+                    <option value = '澎湖縣'>澎湖縣</option>
+                    <option value = '金門縣'>金門縣</option>
+                    <option value = '連江縣'>連江縣</option>
+                </select>&emsp;
+                <input type = 'submit' value = '查詢' style = 'width:70px; height:30px;'>
+            </form>
+        </h4>
+        <div class="Line"></div>
+        <!-- \\ Begin Tab side \\ -->
+        <div class="Tabside">
+            <h5>
+                {{location}}<br>
+                <table style = "border-collapse:separate; border-spacing:40px 10px;" border="1">
+                    {% for s in showdata %}
+                        {% if forloop.first %}
+                            <tr>
+                                <td>{{s.0}}</td>
+                                <td>{{s.1}}</td>
+                                <td><img src = '{% static "img/" %}{{data_img}}'></td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td>{{s.0}}</td>
+                                <td>{{s.1}}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </h5>
+        </div>               
+        <!-- // End Tab Side // -->
+    </div>
+</div>
+<!-- // End About Section // -->

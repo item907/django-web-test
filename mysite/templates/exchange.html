@@ -1,0 +1,32 @@
+{% load static %}
+<!-- \\ Begin About Section \\ -->
+<div class="About_sec" id="exchange">
+    <div class="Center">            	
+        <h2>EXCHANGE RATE</h2><br>           		
+        <h3>台灣銀行&nbsp;--&nbsp;{{title}}</h3>
+        <h4>牌價最新掛牌時間：{{t_time}}</h4>
+        <div class="Line"></div>
+        <!-- \\ Begin Tab side \\ -->
+        <div class="Tabside">
+            <h5>
+                <table style = "border-collapse:separate; border-spacing:40px 10px;" border="1">
+                    <tr><td></td><td>現金匯率</td><td>現金匯率</td><td>即期匯率</td><td>即期匯率</td><td>海關匯率</td><td>海關匯率</td></tr>
+                    <tr><td>幣別</td><td>本行買入</td><td>本行賣出</td><td>本行買入</td><td>本行賣出</td><td>買入</td><td>賣出</td></tr>
+                    {% for d in d_r %}
+                        <tr>
+                            <td>{{d.0}}</td>
+                            <td>{{d.1}}</td>
+                            <td>{{d.2}}</td>
+                            <td>{{d.3}}</td>
+                            <td>{{d.4}}</td>
+                            <td>{{d.5}}</td>
+                            <td>{{d.6}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </h5>
+        </div>               
+        <!-- // End Tab Side // -->
+    </div>
+</div>
+<!-- // End About Section // -->

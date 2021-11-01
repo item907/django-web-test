@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}GE-WEBTEST{% endblock %}
+{% load static %}
+{% block content %}
+<!-- \\ Begin Holder \\ -->
+<div class="DesignHolder">
+	<!-- \\ Begin Frame \\ -->
+	<div class="LayoutFrame">
+        {% include 'header.html' %}
+        {% include 'home.html' %}
+        <div class="bgcolor"></div>
+        <!-- \\ Begin Container \\ -->
+        <div id="Container">
+            {% include 'health.html' %}
+            {% include 'weather.html' %}
+            {% include 'exchange.html' %}
+            {% include 'ex_query.html' %}
+            {% include 'apyt104.html' %}
+            <!-- include部分無法用註解,直接將股票查詢拿掉 -->
+            {% include 'footer.html' %}
+        </div>
+        <!-- // End Container // -->
+	</div>
+	<!-- // End Layout Frame // -->
+</div>
+<!-- // End Design Holder // -->
+<div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+</div>
+{% endblock %}
